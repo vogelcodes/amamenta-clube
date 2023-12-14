@@ -1,5 +1,5 @@
 function Home() {
-  return <h1>Amamenta-Clube.com.br</h1>
+  return <h1>Amamenta-Clube.com.br</h1>;
 }
 
-export default Home
+export default Home;
