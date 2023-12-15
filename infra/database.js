@@ -7,6 +7,9 @@ async function query(q) {
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
   });
+  // const verceldB = new Client({
+  //   connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+  // });
   await client.connect();
   try {
     const res = await client.query(q);
