@@ -1,5 +1,5 @@
 import { Client } from "pg";
-async function query() {
+async function query(q) {
   const client = new Client({
     host: process.env.POSTGRES_HOST,
     port: process.env.POSTGRES_PORT,
@@ -8,9 +8,15 @@ async function query() {
     password: process.env.POSTGRES_PASSWORD,
   });
   await client.connect();
-  const res = await client.query("SELECT 1 + 1 as Sum;");
-  console.log(res.rows[0]);
-  return res;
+  try {
+    const res = await client.query(q);
+    console.log(res.rows[0]);
+    return res;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    await client.end();
+  }
 }
 
 export default {
