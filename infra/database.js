@@ -17,7 +17,6 @@ async function query(q) {
   await client.connect();
   try {
     const res = await client.query(q);
-    console.log(res.rows[0]);
     return res;
   } catch (error) {
     console.error(error);
